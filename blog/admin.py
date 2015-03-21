@@ -3,7 +3,6 @@ from .models import Post, Comentario
 
 # Register your models here.
 
-#fd
 class ComentarioInline(admin.StackedInline):
     model = Comentario
     

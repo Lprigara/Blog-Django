@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block body %}
+    {% for post in post_list %}
+        <h1>
+            <a href="{% url 'detalle' post.pk %}"> 
+            {{ post.titulo }}
+            </a>    
+        </h1>
+        <p>{{ post.cuerpo }}</p>
+    {% endfor %}
+{% endblock body %}

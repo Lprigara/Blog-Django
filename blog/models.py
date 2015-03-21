@@ -1,5 +1,5 @@
 from django.db import models
-
+from django import forms
 # Create your models here.
 
 class Post(models.Model):
@@ -19,3 +19,12 @@ class Comentario(models.Model):
     
     def __unicode__(self):
         return "{} - {}".format(self.post.pk, self.mensaje[:15])
+        
+# Creando formulario propio
+class ComentarioForm(forms.ModelForm):
+    class Meta:
+        model = Comentario
+        fields = ['autor', 'mensaje']
+        widgets = {
+            'mensaje':forms.Textarea(attrs={'cols':80, 'rows':20}), 
+            }

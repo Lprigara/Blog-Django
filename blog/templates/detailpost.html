@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block body %}
+<br>
+<a href="{% url 'home' %}">Atrás</a>
+<h1>{{ post.titulo }}</h1>
+<p>{{ post.cuerpo }}</p>
+<p> Escrito por {{ object.autor }}</p>
+<hr>
+
+{% for comment in post.comentario_set.all %}
+<p>{{ comment.mensaje }}</p>
+{% empty %}
+<p> Este post no tiene ningún mensaje</p>
+{% endfor %}
+
+{% endblock body %}
+
