@@ -12,3 +12,10 @@ class Post(models.Model):
         return "Post: {}, autor: {}".format(self.titulo, self.autor)
     
     
+class Comentario(models.Model):
+    post = models.ForeignKey(Post) #un comentario solo pertenece a un post
+    autor = models.CharField(max_length=255)
+    mensaje = models.TextField()
+    
+    def __unicode__(self):
+        return "{} - {}".format(self.post.pk, self.mensaje[:15])

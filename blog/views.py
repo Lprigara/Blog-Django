@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.shortcuts import render_to_response
 from .models import Post
+from django.http import Http404
+
 # Create your views here.
 
 def lista(request):
@@ -9,6 +11,9 @@ def lista(request):
     return render_to_response("lista.html", contexto)
     
 def detalle(request, pk):
-    post = Post.objects.get(pk=pk)
+    try:
+        post = Post.objects.get(pk=pk)
+    except Post.DoesNotExist:
+        raise Http404("Este post no existe")
     contexto = {'post' : post}
     return render_to_response("detalle.html", contexto)
